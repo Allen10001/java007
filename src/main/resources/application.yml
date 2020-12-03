@@ -1,0 +1,82 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+    accesslog:
+      buffered: true
+      directory: /letv/logs/tomcat-access/demo001/
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: true
+      rotate: true
+      suffix: .log
+  port: 7070
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: zk-server
+  cloud:
+    zookeeper:
+      connect-string: zk2018i.bjgh.db.lecloud.com:2018
+      discovery:
+        register: true
+        enabled: true
+        instance-id: 1
+        root: /
+  # 环境 dev|test|prod
+  profiles:
+    active: dev
+  redis:
+    # database: 0
+    # host: rm6672i.tjtn.db.lecloud.com
+    # port: 6672
+    password: BE2I3e4yaz  # 密码（默认为空）
+    timeout: 6000ms  # 连接超时时长（毫秒）
+    cluster:
+      nodes: rm6672i.tjtn.db.lecloud.com:6672
+      maxRedirects: 3
+    Lettuce:
+      pool:
+        max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: 5000ms    # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 15      # 连接池中的最大空闲连接
+        min-idle: 15       # 连接池中的最小空闲连接
+  kafka:
+    bootstrap-servers: 10.58.84.113:9092
+    producer:
+      retries: 0
+      batch-size: 2
+      buffer-memory: 512MB
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+    consumer:
+      group-id: demo001_group001
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      max-poll-records: 500
+      isolation-level: read_committed
+logging:
+  config: classpath:logback-spring.xml
+# zk 客户端配置
+#spring:
+#  application:
+#    name: zk-client
+#  cloud:
+#    zookeeper:
+#      connect-string: localhost:2081
+#      discovery:
+#        register: true
+#        enabled: true
+#        instance-id: 1
+#        root: /shenniu
+#server:
+#  port: 7061
