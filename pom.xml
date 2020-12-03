@@ -8,10 +8,10 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.letv</groupId>
-    <artifactId>demo001</artifactId>
+    <groupId>com.tv</groupId>
+    <artifactId>java007</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo001</name>
+    <name>java007</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
