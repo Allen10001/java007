@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml" />-->
+
+    <appender name="LOG" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} -
+                %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 开发环境 -->
+    <springProfile name="dev">
+        <appender name="LOG" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} -
+                    %msg %n</Pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+    <!-- 测试环境 -->
+    <springProfile name="test">
+        <appender name="LOG"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>/Users/allen/work_file/test.log</File>
+            <rollingPolicy
+                    class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>/Users/allen/work_file/test.%d{yyyy-MM-dd}.log
+                </FileNamePattern>
+            </rollingPolicy>
+            <encoder>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} -
+                    %msg %n</Pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+    <!-- 生产环境 -->
+    <springProfile name="prod">
+        <appender name="LOG"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>/Users/allen/work_file/prod.log</File>
+            <rollingPolicy
+                    class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>/Users/allen/work_file/prod.%d{yyyy-MM-dd}.log
+                </FileNamePattern>
+                <maxHistory>10</maxHistory>
+                <totalSizeCap>500MB</totalSizeCap>
+            </rollingPolicy>
+            <encoder>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} -
+                    %msg %n</Pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+    <root level="INFO">
+        <appender-ref ref="LOG" />
+    </root>
+
+</configuration>
