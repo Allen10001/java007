@@ -44,6 +44,24 @@ public class OldVersionOriginReceiver {
         props.put("zookeeper.sync.time.ms", "2000");
         props.put("enable.auto.commit", true);
         props.put("auto.commit.interval.ms", "1000");
+        /**
+         * What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server
+         * (e.g. because that data has been deleted):
+         * <ul>
+         * <li>earliest: automatically reset the offset to the earliest offset
+         * <li>latest: automatically reset the offset to the latest offset</li>
+         * <li>none: throw exception to the consumer if no previous offset is found for the consumer's group</li>
+         * <li>anything else: throw exception to the consumer.
+         *
+         * latest和earliest区别
+         *
+         * 1，earliest 当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
+         *
+         * 2，latest 当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据
+         *
+         * 提交过offset，latest和earliest没有区别，但是在没有提交offset情况下，用latest直接会导致无法读取旧数据。
+         * rec 中老数据是经过gzip压缩的，新数据是没有经过压缩的，所以直接消费没有经过压缩的即可。
+         */
         props.put("auto-offset-reset", "largest");
 
         ConsumerConfig kafkaConsumerConfig = new ConsumerConfig(props);
