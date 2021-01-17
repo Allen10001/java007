@@ -17,6 +17,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.verson>Finchley.SR2</spring-cloud.verson>
+        <javasimon.version>4.1.0</javasimon.version>
     </properties>
 
     <dependencies>
@@ -58,6 +59,37 @@
             <type>bundle</type>
         </dependency>
 
+
+        <!-- Core JAR is absolutely necessary to use Simons (Stopwatch, etc.) -->
+        <dependency>
+            <groupId>org.javasimon</groupId>
+            <artifactId>javasimon-core</artifactId>
+            <version>${javasimon.version}</version>
+        </dependency>
+        <!-- This one allows monitoring JDBC calls (proxy driver) -->
+        <dependency>
+            <groupId>org.javasimon</groupId>
+            <artifactId>javasimon-jdbc41</artifactId>
+            <version>${javasimon.version}</version>
+        </dependency>
+        <!-- JavaEE support, servlet filter, EJB/CDI interceptor -->
+        <dependency>
+            <groupId>org.javasimon</groupId>
+            <artifactId>javasimon-javaee</artifactId>
+            <version>${javasimon.version}</version>
+        </dependency>
+        <!-- Spring support, AOP interceptor, MVC handler interceptor -->
+        <dependency>
+            <groupId>org.javasimon</groupId>
+            <artifactId>javasimon-spring</artifactId>
+            <version>${javasimon.version}</version>
+        </dependency>
+        <!-- Embedded Java Simon web console -->
+        <dependency>
+            <groupId>org.javasimon</groupId>
+            <artifactId>javasimon-console-embed</artifactId>
+            <version>${javasimon.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
