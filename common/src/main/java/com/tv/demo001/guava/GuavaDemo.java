@@ -82,6 +82,9 @@ public class GuavaDemo {
 
         System.out.println(Joiner.on("|").useForNull("").join(Arrays.asList("a", null,"b", "c")));
 
+        /**
+         * 分离器
+         */
         String toBeSplitedStr = ",a,\"\",b,";
         Iterator<String> strIterator = Splitter.on(",")
                 .trimResults()
