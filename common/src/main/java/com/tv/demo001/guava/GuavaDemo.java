@@ -115,7 +115,7 @@ public class GuavaDemo {
 
         //Count distinct word occurrences in a file
         Multiset<String> wordOccurrences = HashMultiset.create(
-                Splitter.on(CharMatcher.WHITESPACE)
+                Splitter.on(" ")
                         .trimResults()
                         .omitEmptyStrings()
                         .split(Files.asCharSource(file, Charsets.UTF_8).read()));
