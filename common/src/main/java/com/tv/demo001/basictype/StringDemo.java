@@ -1,4 +1,4 @@
-package com.tv.demo001.string;
+package com.tv.demo001.basictype;
 
 public class StringDemo {
 
