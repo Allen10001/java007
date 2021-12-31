@@ -90,6 +90,12 @@
             <artifactId>javasimon-console-embed</artifactId>
             <version>${javasimon.version}</version>
         </dependency>
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java</artifactId>
+        <version>3.3.0</version>
+      </dependency>
+
     </dependencies>
 
     <build>
