@@ -43,12 +43,21 @@ public class GuavaDemo {
             }
         };
 
+        /**
+         * HashFunction 是一个单纯的（引用透明的）、无状态的方法，它把任意的数据块映射到固定数目的位指，并且保证相同的输入一定产生相同的输出，
+         * 不同的输入尽可能产生不同的输出。
+         */
         HashFunction hfMd5 = Hashing.md5();
         HashFunction hfSha1 = Hashing.sha1();
         HashFunction hfSha256 = Hashing.sha256();
         HashFunction hfSha512 = Hashing.sha512();
         HashFunction hfMurmur3_32 = Hashing.murmur3_32();
-
+        /**
+         * 一旦 Hasher 被赋予了所有输入，就可以通过 hash() 方法获取 HashCode 实例。
+         *
+         * HashCode 可以通过 asInt()、asLong()、asBytes() 方法来做相等性检测，此外，writeBytesTo(array, offset, maxLength)
+         * 把散列值的前 maxLength 字节写入字节数组。
+         */
         HashCode hc = hfMd5.newHasher()
                 .putLong(1000L)
                 .putString("hello world", Charsets.UTF_8)
