@@ -1,5 +1,8 @@
 package com.tv.demo001.lock;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * 广义上的可重入锁指的是可重复可递归调用的锁，在外层使用锁之后，在内层仍然可以使用，
  * 并且不发生死锁（前提得是同一个对象或者class），这样的锁就叫做可重入锁。ReentrantLock和synchronized都是可重入锁
@@ -9,6 +12,7 @@ public class LockTest001 {
 
     private static LockTest001 instance;
     public static final Object lock = new Object();
+    public static Lock lock1 = new ReentrantLock();
 
     public static void main(String[] args) {
         System.out.println(getInstance());
