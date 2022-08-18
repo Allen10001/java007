@@ -96,6 +96,18 @@
         <version>3.3.0</version>
       </dependency>
 
+      <!--  guice    -->
+      <dependency>
+        <groupId>com.google.inject</groupId>
+        <artifactId>guice</artifactId>
+        <version>4.0</version>
+      </dependency>
+      <!--   自动注入 Set 和 Map 的扩展工具   -->
+      <dependency>
+        <groupId>com.google.inject.extensions</groupId>
+        <artifactId>guice-multibindings</artifactId>
+        <version>4.0</version>
+      </dependency>
     </dependencies>
 
     <build>
