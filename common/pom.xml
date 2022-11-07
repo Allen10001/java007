@@ -108,6 +108,11 @@
         <artifactId>guice-multibindings</artifactId>
         <version>4.0</version>
       </dependency>
+      <dependency>
+        <groupId>org.redisson</groupId>
+        <artifactId>redisson</artifactId>
+        <version>3.17.7</version>
+      </dependency>
     </dependencies>
 
     <build>
