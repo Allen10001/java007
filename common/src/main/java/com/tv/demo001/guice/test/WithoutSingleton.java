@@ -1,9 +1,8 @@
-package com.tv.demo001.guice;
+package com.tv.demo001.guice.test;
 
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import org.javasimon.Sample;
 
 /**
  * 不写 Singleton 时，injector 每次获取实例时会重新构建一个

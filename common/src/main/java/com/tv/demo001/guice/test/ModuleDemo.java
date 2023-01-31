@@ -1,11 +1,10 @@
-package com.tv.demo001.guice;
+package com.tv.demo001.guice.test;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
-import org.javasimon.Sample;
 
 /**
  * @author hubo88

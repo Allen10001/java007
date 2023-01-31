@@ -1,4 +1,4 @@
-package com.tv.demo001.guice;
+package com.tv.demo001.guice.test;
 
 import com.google.inject.Guice;
 import com.google.inject.Inject;
