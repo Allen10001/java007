@@ -30,17 +30,37 @@ class Application {
 
     void run() {
         solution1.resolve();
+        System.out.println(solution1);
     }
 }
 
-@Singleton
+//@Singleton
 class Solution1 {
 
     static final Pattern pattern001 = Pattern.compile("\\$\\w+");
     static final Pattern pattern002 = Pattern.compile("#\\w+");
 
+    private String exp;
+
+    // 相比下边的构造器方法，@Inject 修饰的普通方法优先级更高
+    @Inject
+    public void initM() {
+        this.exp = "$aaa, bbb, $ccc, ddd, fff, #ddd";
+//        System.out.println("$aaa, bbb, $ccc, ddd, fff, #ddd");
+    }
+
+    /**
+     * Classes must have either one (and only one) constructor annotated with @Inject or a zero-argument constructor that is not private.
+     */
+    @Inject
+    public Solution1(String a) {
+        this.exp = "$aaa, bbb, $ccc, ddd, $eee, fff, #ddd";;
+    }
+
+
+
     void resolve() {
-        String exp = "$aaa, bbb, $ccc, ddd, $eee, fff, #ddd";
+
         String exp001 = "$aaa";
         Matcher m = pattern001.matcher(exp);
         Matcher m2 = pattern002.matcher(exp);
