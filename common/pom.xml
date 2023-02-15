@@ -121,7 +121,7 @@
       <dependency>
         <groupId>com.google.inject</groupId>
         <artifactId>guice</artifactId>
-        <version>4.0</version>
+        <version>5.0.0</version>
       </dependency>
       <!--   自动注入 Set 和 Map 的扩展工具   -->
       <dependency>
@@ -129,6 +129,7 @@
         <artifactId>guice-multibindings</artifactId>
         <version>4.0</version>
       </dependency>
+
       <dependency>
         <groupId>org.redisson</groupId>
         <artifactId>redisson</artifactId>

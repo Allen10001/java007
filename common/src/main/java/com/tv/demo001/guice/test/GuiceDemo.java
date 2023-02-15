@@ -27,7 +27,7 @@ public class GuiceDemo {
         injector.getInstance(HelloPrinter.class).print(1);
 
         // 2.
-        injector.getInstance(GuiceDemo.class).demoPrint();
+//        injector.getInstance(GuiceDemo.class).demoPrint();
     }
 
 }
@@ -35,8 +35,16 @@ public class GuiceDemo {
 @Singleton
 class HelloPrinter {
 
+    private String hello = "hello world";
+
+    @Inject
+    public HelloPrinter(String hello) {
+        System.out.println(hello.isEmpty()); // true
+        this.hello = hello;
+    }
+
     public void print(int i) {
-        System.out.println("Hello, World" + i);
+        System.out.println(hello + i);
     }
 
 }
