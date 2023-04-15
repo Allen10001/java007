@@ -164,6 +164,12 @@
         <artifactId>junit</artifactId>
       </dependency>
 
+      <!-- java 协程-->
+      <dependency>
+        <groupId>co.paralleluniverse</groupId>
+        <artifactId>quasar-core</artifactId>
+        <version>0.8.0</version>
+      </dependency>
     </dependencies>
 
     <build>
