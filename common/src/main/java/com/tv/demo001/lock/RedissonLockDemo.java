@@ -40,6 +40,7 @@ class Solution {
         // Sync and Async API
         RedissonClient redisson = Redisson.create(config);
         RLock lock = redisson.getLock("lock");
+        // 源码研究入口
         lock.lock();
         try{
             Thread.sleep(300000);
