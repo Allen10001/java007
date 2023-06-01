@@ -1,6 +1,7 @@
 package com.tv.demo001.juc.compeletableFuture;
 
 import java.util.concurrent.CompletableFuture;
+import org.checkerframework.checker.units.qual.C;
 
 /**
  * @author hubo88
@@ -129,5 +130,48 @@ class Main002 {
         } catch (InterruptedException e) {
         }
         return 5 + Math.random() * 20;
+    }
+}
+
+/**
+ * 顺序打印三个字母
+ */
+class Main003{
+
+    public static void main(String[] args) throws Exception {
+        CompletableFuture completableFuture = CompletableFuture
+            .runAsync(() -> new T1().start())
+            .thenRun(() ->new T2().start())
+            .thenRun(() ->new T3().start());
+        completableFuture.get();
+        CompletableFuture completableFuture2 = CompletableFuture
+            .runAsync(() -> new T1().start())
+            .thenRun(() ->new T2().start())
+            .thenRun(() ->new T3().start());
+        completableFuture2.get();
+    }
+}
+
+class T1 extends Thread{
+
+    @Override
+    public void run() {
+        System.out.print("A");
+    }
+}
+
+class T2 extends Thread{
+
+    @Override
+    public void run() {
+        System.out.print("B");
+    }
+}
+
+class T3 extends Thread{
+
+    @Override
+    public void run() {
+        System.out.print("C");
     }
 }
