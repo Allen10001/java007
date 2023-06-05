@@ -1,5 +1,13 @@
 package com.tv.demo001.basictype;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class StringDemo {
 
     public static void main(String[] args) {
@@ -26,4 +34,81 @@ public class StringDemo {
         String res_result = itemArr[6].replace("\"", "");
         System.out.println(res_result);
     }
+
+
 }
+
+class Main001{
+
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        map.put("a", "bbb");
+        String res = map.get("a");
+        System.out.println(res);
+        map.remove("a");
+        System.out.println(res);
+    }
+}
+
+class Main002{
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+//        if (in.hasNextLine()) { // 注意 while 处理多个 case
+//            String line = in.nextLine();
+//            System.out.println(Math.round(Float.valueOf(line)));
+//        }
+        char a = 'a';
+        String b;
+        while (in.hasNext()) {
+            b = in.next();
+            System.out.println(b);
+        }
+
+    }
+}
+
+ class Main003 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+        Integer lineNum = 0;
+        if (in.hasNextLine()) {
+            lineNum = Integer.valueOf(in.nextLine());
+        }
+        Set<Integer> numSet = new HashSet<Integer>();
+        for (int i=0; i<lineNum; i++) {
+            if (in.hasNextLine()) {
+                numSet.add(Integer.valueOf(in.nextLine()));
+            }
+        }
+        // 倒序
+        numSet.stream().sorted((o1, o2) ->{
+            if (o1<o2) {
+                return 1;
+            } else if (o1>o2) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }).forEach(System.out::println);
+    }
+}
+
+class Main004{
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+        Set<Integer> numSet = new HashSet<Integer>();
+        for (int i=0; i<5; i++) {
+            if (in.hasNextLine()) {
+                numSet.add(Integer.valueOf(in.nextLine()));
+            }
+        }
+        System.out.println(numSet.stream().reduce((o1, o2) -> {return o1+o2;}).get());
+    }
+}
+
+
