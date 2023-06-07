@@ -1,6 +1,7 @@
 package com.tv.demo001.juc.compeletableFuture;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import org.checkerframework.checker.units.qual.C;
 
 /**
@@ -173,5 +174,16 @@ class T3 extends Thread{
     @Override
     public void run() {
         System.out.print("C");
+    }
+}
+
+class Main004{
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        CompletableFuture<Integer> completableFuture = CompletableFuture.completedFuture(10);
+        Integer value = completableFuture.get();
+        Integer value2 = completableFuture.get();
+        System.out.println(value);
+        System.out.println(value2);
     }
 }
