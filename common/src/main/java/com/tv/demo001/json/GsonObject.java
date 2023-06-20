@@ -271,6 +271,46 @@ public class GsonObject {
         System.out.println(gson.toJson(jsonObject));
     }
 
+}
 
+class Solution001{
+    private static final Gson gson = new Gson();
+
+    public static void main(String[] args) {
+        Student stu = new Student("name", 17);
+        System.out.println(gson.toJson(stu));
+    }
+
+    /**
+     * bean 带有 transient 关键字 json 序列化时 该字段不会被序列化
+     */
+    static class Student{
+        private transient String name;
+        private Integer age;
+
+        public Student() {
+        }
+
+        public Student(String name, Integer age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public void setAge(Integer age) {
+            this.age = age;
+        }
+    }
 
 }
