@@ -112,3 +112,18 @@ class Main004{
 }
 
 
+class Main005{
+
+    public static void main(String[] args) {
+        String className = "aaa$$enhanceByGuice$$adf86";
+        if (className.contains("$$")) {
+            String[] nameArr = className.split("\\$\\$");
+            if (nameArr.length > 0) {
+                className = nameArr[0];
+            }
+        }
+        System.out.println(className);
+    }
+}
+
+
