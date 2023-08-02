@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * map 测试类
@@ -17,7 +18,7 @@ import java.util.Optional;
  */
 public class MapDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Map<Long, String> map = new HashMap<>();
         map.put(100014237835L, "100");
         map.put(100014237836L, "110");
