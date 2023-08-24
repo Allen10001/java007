@@ -28,6 +28,9 @@ public class AtomicIntegerDemo {
 
         Thread.sleep(1000);
         System.out.println(atomicInteger.get());
+
+        System.out.println(atomicInteger.getClass().getName());
+        System.out.println(atomicInteger.getClass().getSimpleName());
     }
 
     public AtomicInteger add(AtomicInteger atomicInteger) {

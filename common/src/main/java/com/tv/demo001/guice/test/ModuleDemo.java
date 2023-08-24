@@ -23,8 +23,11 @@ public class ModuleDemo {
 
     public static void main(String[] args) {
         Injector injector = Guice.createInjector(new SampleModule());
-        ModuleDemo sample = injector.getInstance(ModuleDemo.class);
-        sample.hello();
+        SimpleHelloPrinter01 sample1 = injector.getInstance(SimpleHelloPrinter01.class);
+        SimpleHelloPrinter01 sample2 = injector.getInstance(SimpleHelloPrinter01.class);
+        SimpleHelloPrinter01 sample3 = injector.getInstance(SimpleHelloPrinter01.class);
+        SimpleHelloPrinter01 sample4 = injector.getInstance(SimpleHelloPrinter01.class);
+        sample1.print();
     }
 
 }
@@ -37,14 +40,25 @@ interface IHelloPrinter01 {
 @Singleton
 class SimpleHelloPrinter01 implements IHelloPrinter01 {
 
+    @Inject
+    private void init() {
+        System.out.println("simple");
+    }
+
     @Override
     public void print() {
         System.out.println("Hello, Simple World");
     }
 }
 
-@Singleton
+//@Singleton
 class ComplexHelloPrinter01 implements IHelloPrinter01 {
+
+    @Inject
+    private void init() {
+        System.out.println("complex");
+    }
+
     @Override
     public void print() {
         System.out.println("Hello, Complex World");
@@ -54,6 +68,7 @@ class ComplexHelloPrinter01 implements IHelloPrinter01 {
 class SampleModule extends AbstractModule {
     @Override
     protected void configure() {
-        bind(IHelloPrinter01.class).to(SimpleHelloPrinter01.class);
+//        bind(IHelloPrinter01.class).to(SimpleHelloPrinter01.class);
+        bind(SimpleHelloPrinter01.class);
     }
 }
