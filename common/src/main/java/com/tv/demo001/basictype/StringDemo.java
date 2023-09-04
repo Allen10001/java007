@@ -1,5 +1,7 @@
 package com.tv.demo001.basictype;
 
+import java.util.Arrays;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -123,6 +125,21 @@ class Main005{
             }
         }
         System.out.println(className);
+    }
+}
+
+class Main006{
+
+    public static void main(String[] args) {
+        String className = "a//b";
+
+        String[] nameArr = className.split("/");
+        if (nameArr.length > 0) {
+            className = nameArr[0];
+        }
+        System.out.println(nameArr.length);
+        Arrays.stream(nameArr).forEach(item->System.out.println(item));
+
     }
 }
 
