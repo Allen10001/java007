@@ -4,11 +4,15 @@ import java.util.Arrays;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.checkerframework.checker.units.qual.C;
 
 public class StringDemo {
 
@@ -140,6 +144,37 @@ class Main006{
         System.out.println(nameArr.length);
         Arrays.stream(nameArr).forEach(item->System.out.println(item));
 
+    }
+}
+
+
+
+class Main007{
+
+    public static void main(String[] args) {
+        try {
+            String str2 = "aa";
+            LinkedList<Long> debugSkus = new LinkedList<>();
+            CountDownLatch countDownLatch = new CountDownLatch(2);
+            Thread thread1 = new Thread(()->{
+                for (int i=0; i<5000; i++) {
+                    debugSkus.add(1L);
+                }
+                countDownLatch.countDown();
+            });
+            Thread thread2 = new Thread(()->{
+                for (int i=0; i<5000; i++) {
+                    debugSkus.add(1L);
+                }
+                countDownLatch.countDown();
+            });
+            thread1.start();
+            thread2.start();
+            countDownLatch.await();
+            System.out.println(str2+":"+debugSkus.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
