@@ -1,6 +1,7 @@
 package com.tv.demo001.json;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -88,4 +89,34 @@ public class Solution007 {
 
     }
 
+}
+
+
+class Solution008 {
+
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+
+    public static void main(String[] args) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("multiQueueSplit.queueCandidateSetConfigs", "[{queueCandidateSetName=allSku,policy=ALL_SKU,config={}}]");
+        System.out.println(gson.toJson(jsonObject));
+    }
+}
+
+class Solution009 {
+
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+
+    public static void main(String[] args) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("a.b.c", "111111111");
+        jsonObject.addProperty("a.b.c.d", "22222222");
+        jsonObject.addProperty("d.e.f.g", "333333");
+        jsonObject.addProperty("a.b.c.d", "111111111");
+        jsonObject.addProperty("a.b.c.f", "111111111");
+        System.out.println(gson.toJson(jsonObject));
+
+        Map<String, String> map = gson.fromJson(jsonObject, Map.class);
+        System.out.println(map.size());
+    }
 }
