@@ -178,4 +178,19 @@ class Main007{
     }
 }
 
+class Main008{
+
+    public static void main(String[] args) {
+        String className = "a.b";
+
+        String[] nameArr = className.split("\\.");
+        if (nameArr.length > 0) {
+            className = nameArr[0];
+        }
+        System.out.println(nameArr.length);
+        Arrays.stream(nameArr).forEach(item->System.out.println(item));
+
+    }
+}
+
 
