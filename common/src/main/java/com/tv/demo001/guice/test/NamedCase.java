@@ -44,8 +44,9 @@ public class NamedCase {
     public static void main(String[] args) {
         Injector injector = Guice.createInjector(new SampleModule003());
         NamedCase sample = injector.getInstance(NamedCase.class);
-        IHelloPrinter003 iHelloPrinterComplex = injector.getInstance(Key.get(IHelloPrinter003.class, Names.named("complex")));
         sample.hello();
+
+        IHelloPrinter003 iHelloPrinterComplex = injector.getInstance(Key.get(IHelloPrinter003.class, Names.named("complex")));
         iHelloPrinterComplex.print();
 
         IHelloPrinter003 iHelloPrinterSimple = injector.getInstance(Key.get(IHelloPrinter003.class, Names.named("simple")));
