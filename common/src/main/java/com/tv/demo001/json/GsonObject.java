@@ -1,7 +1,9 @@
 package com.tv.demo001.json;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import java.lang.reflect.Modifier;
 
 /**
  * @author hubo88
@@ -273,12 +275,21 @@ public class GsonObject {
 
 }
 
+/**
+ * Gson deserialize and serialize transient field.
+ * https://stackoverflow.com/questions/31669876/gson-deserialize-and-serialize-transient-field
+ */
 class Solution001{
-    private static final Gson gson = new Gson();
+
+    private static final Gson gson1 = new Gson();
+    private static final Gson gson2 = new GsonBuilder()
+        .serializeNulls()
+        .excludeFieldsWithModifiers(Modifier.ABSTRACT)
+        .create();
 
     public static void main(String[] args) {
-        Student stu = new Student("name", 17);
-        System.out.println(gson.toJson(stu));
+        Student stu = new Student("name", null);
+        System.out.println(gson2.toJson(stu));
     }
 
     /**
