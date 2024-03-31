@@ -21,6 +21,19 @@
     </properties>
 
     <dependencies>
+
+      <!-- AspectJ 使用 -->
+      <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>1.8.13</version>
+      </dependency>
+      <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>1.8.13</version>
+      </dependency>
+
       <dependency>
         <groupId>com.googlecode.protobuf-java-format</groupId>
         <artifactId>protobuf-java-format</artifactId>
