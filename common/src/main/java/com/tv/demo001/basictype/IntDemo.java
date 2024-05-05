@@ -12,5 +12,8 @@ public class IntDemo {
     public static void main(String[] args) {
         System.out.println((1f/2)*2);   // 1
         System.out.println((1/2)*2);    // 0
+
+        System.out.println((int)(100*Math.random()));
+        System.out.println((int)(100*Math.random()));
     }
 }
