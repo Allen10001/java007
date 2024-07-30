@@ -20,17 +20,13 @@ public class AtomicIntegerDemo {
 
     public static void main(String[] args) throws InterruptedException {
         AtomicInteger atomicInteger = new AtomicInteger(0);
-
-        new Thread(() -> {
-            AtomicIntegerDemo mapDemo = new AtomicIntegerDemo();
-            mapDemo.add(atomicInteger);
-        }).start();
-
-        Thread.sleep(1000);
-        System.out.println(atomicInteger.get());
-
-        System.out.println(atomicInteger.getClass().getName());
-        System.out.println(atomicInteger.getClass().getSimpleName());
+        AtomicIntegerDemo demo = new AtomicIntegerDemo();
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            demo.add(atomicInteger);
+        }
+        long cost = System.currentTimeMillis()-start;
+        System.out.println(cost);
     }
 
     public AtomicInteger add(AtomicInteger atomicInteger) {
