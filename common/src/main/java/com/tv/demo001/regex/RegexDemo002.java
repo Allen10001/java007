@@ -16,7 +16,7 @@ public class RegexDemo002 {
 
     public static void main(String[] args) {
         RegexDemo002 regexDemo002 = new RegexDemo002();
-        regexDemo002.solution();
+        regexDemo002.solution2();
     }
 
     public void solution() {
@@ -26,6 +26,9 @@ public class RegexDemo002 {
 
         Pattern conPattern = Pattern.compile("(?<=\\[)(\\S+)(?=\\])");
         Pattern touchStoneConPattern = Pattern.compile("(?<=\\#)(\\S+)(?=\\#)");
+
+
+
         conditionSet.forEach(condition -> {
             boolean hitCondition = false;
 
@@ -46,5 +49,18 @@ public class RegexDemo002 {
                 }
             }
         });
+    }
+
+    public void solution2() {
+        String ipStr = "__ip127.3.33.1__";
+        Pattern ipStrPattern = Pattern.compile("(?<=__ip)(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})(?=__)");
+        Matcher mat = ipStrPattern.matcher(ipStr);
+        String ip = "";
+        while (mat.find()) {
+            System.out.println(mat.group());
+            ip = mat.group(1);
+        }
+        System.out.println("__ip"+ip+"__");
+
     }
 }

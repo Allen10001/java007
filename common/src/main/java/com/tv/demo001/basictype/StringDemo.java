@@ -193,4 +193,18 @@ class Main008{
     }
 }
 
+class Main009{
+
+    public static void main(String[] args) {
+        String key = "__gray.newUserColdStartRecaller.StandardIndexRecallerProcessor.lastLimit";
+        final String MINOR_CLUSTER_PARAM_PREFIX = "__gray.";
+
+        if (key.startsWith(MINOR_CLUSTER_PARAM_PREFIX)) {
+            System.out.println("TRUE");
+        }
+
+        System.out.println(key.substring(MINOR_CLUSTER_PARAM_PREFIX.length()));
+    }
+}
+
 
