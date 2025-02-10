@@ -6,7 +6,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.LockSupport;
+import org.apache.commons.collections4.ListUtils;
 
 /**
  * map 测试类
@@ -18,20 +22,26 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class AtomicIntegerDemo {
 
-    public static void main(String[] args) throws InterruptedException {
-        AtomicInteger atomicInteger = new AtomicInteger(0);
-        AtomicIntegerDemo demo = new AtomicIntegerDemo();
-        long start = System.currentTimeMillis();
-        for (int i = 0; i < 1000; i++) {
-            demo.add(atomicInteger);
+    public static void main(String[] args) {
+        try {
+            CompletableFuture completedFuture = CompletableFuture.supplyAsync(() -> {
+//                LockSupport.parkNanos(1000000000L);
+                return 2;
+            });
+
+            completedFuture.thenAccept(result -> {
+                    System.out.println("bbb"+System.currentTimeMillis());
+                    LockSupport.parkNanos(3000000000L);
+                    System.out.println("bbb"+System.currentTimeMillis());
+                }).orTimeout(2000, TimeUnit.MILLISECONDS)
+                .exceptionally(e -> {
+                    System.out.println("ccc"+System.currentTimeMillis());
+                    ((Throwable)e).printStackTrace();
+                    return null;
+                }).get();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        long cost = System.currentTimeMillis()-start;
-        System.out.println(cost);
+        System.exit(0);
     }
-
-    public AtomicInteger add(AtomicInteger atomicInteger) {
-        atomicInteger.addAndGet(1);
-        return atomicInteger;
-    }
-
 }

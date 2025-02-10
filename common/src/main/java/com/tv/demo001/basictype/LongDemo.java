@@ -14,7 +14,7 @@ public class LongDemo {
 
     public static void main(String[] args) {
         Injector injector = Guice.createInjector();
-        injector.getInstance(Solution001.class).resolve();
+        injector.getInstance(Solution003.class).resolve();
     }
 }
 
@@ -50,5 +50,19 @@ class Solution001 {
         char[] binaryCharArr = binaryStr.toCharArray();
         System.out.println(binaryCharArr.length);
         Assert.isTrue("10000000000000".equals(binaryStr));
+    }
+}
+
+@Singleton
+class Solution003 {
+    public void resolve() {
+        Long value = 580l;
+        int i = 0;
+        while(value > 0) {
+            value *= 20;
+            i++;
+         }
+        System.out.println(value);
+        System.out.println(i);
     }
 }

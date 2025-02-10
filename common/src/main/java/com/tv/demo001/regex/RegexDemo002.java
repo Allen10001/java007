@@ -3,6 +3,7 @@ package com.tv.demo001.regex;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,10 +25,9 @@ public class RegexDemo002 {
             add("\"CONDITION#hint.has('ci')&&hint.get('ci').getAsInt()==5#.aggMaterialInfoFiller.MaterialResultFillProcessor.materialConfigMap\"");
         }};
 
-        Pattern conPattern = Pattern.compile("(?<=\\[)(\\S+)(?=\\])");
+        final Pattern conPattern = Pattern.compile("(?<=\\[)(\\S+)(?=\\])");
+        // 正向肯定预查匹配?= 、 反向肯定预发匹配  ?<=
         Pattern touchStoneConPattern = Pattern.compile("(?<=\\#)(\\S+)(?=\\#)");
-
-
 
         conditionSet.forEach(condition -> {
             boolean hitCondition = false;

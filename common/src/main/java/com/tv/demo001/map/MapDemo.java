@@ -38,6 +38,8 @@ public class MapDemo {
         System.out.println(Optional.ofNullable(hashMap).orElseGet(HashMap::new)
             .get(100007197427L));
 
+        System.out.println(map.containsKey(null));
+
     }
 
 }
