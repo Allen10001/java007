@@ -1,5 +1,8 @@
 package com.tv.demo001.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 节点父类
  *
@@ -8,6 +11,8 @@ package com.tv.demo001.bean;
  * @date 2024/5/29 11:01 AM
  */
 public class Vertex {
+
+    protected ArrayList<Integer> list;
 
     private Integer id;
     protected String alias;

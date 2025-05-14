@@ -1,5 +1,7 @@
 package com.tv.demo001.bean;
 
+import java.util.List;
+
 /**
  * 节点子类.
  * https://stackoverflow.com/questions/4716040/do-subclasses-inherit-private-fields
@@ -17,6 +19,8 @@ package com.tv.demo001.bean;
  * @date 2024/5/29 11:02 AM
  */
 public class ChildVertex extends Vertex{
+
+    private List<Integer> list;
 
     private String name;
 
